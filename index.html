@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EduSpace 🚀 | სასწავლო ჰაბი</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="hub-shell">
+		<header class="site-header">
+			<div class="brand-block">
+				<p class="eyebrow">LEARN / EXPLORE / GROW</p>
+				<h1 id="app-title">EduSpace 🚀</h1>
+				<p id="app-subtitle" class="subtitle">ისწავლე შეზღუდვების გარეშე, მსოფლიოს ნებისმიერი წერტილიდან</p>
+			</div>
+			<div class="header-controls">
+				<button id="admin-toggle" class="admin-button" type="button" aria-haspopup="dialog">⌘ Admin</button>
+				<button id="theme-toggle" class="icon-button" type="button" aria-label="ღია თემის ჩართვა">☀️</button>
+				<div class="language-switcher" role="group" aria-label="ენის არჩევა">
+					<button class="language-button active" type="button" data-language="ge">GE</button>
+					<button class="language-button" type="button" data-language="en">EN</button>
+				</div>
+			</div>
+		</header>
+
+		<dialog id="admin-dialog" class="admin-dialog" aria-labelledby="admin-dialog-title">
+			<div class="admin-dialog-inner">
+				<button id="admin-close" class="dialog-close" type="button" aria-label="დახურვა">×</button>
+				<div id="admin-login-view">
+					<span class="section-kicker">PRIVATE ACCESS</span>
+					<h2 id="admin-dialog-title">Admin panel</h2>
+					<p id="admin-description" class="admin-description">შეიყვანე ადმინისტრატორის კოდი რესურსის დასამატებლად.</p>
+					<form id="admin-login-form" class="admin-login-form">
+						<label for="admin-password" id="admin-password-label">ადმინისტრატორის კოდი</label>
+						<input id="admin-password" type="password" autocomplete="current-password" required>
+						<p id="admin-error" class="admin-error" role="alert" hidden>კოდი არასწორია.</p>
+						<button id="admin-login-button" type="submit">შესვლა</button>
+					</form>
+				</div>
+				<div id="admin-form-view" hidden>
+					<div class="panel-heading">
+						<div><span class="section-kicker">CURATE YOUR SPACE</span><h2 id="add-heading">ახალი რესურსის დამატება</h2></div>
+						<span class="plus-mark">+</span>
+					</div>
+					<form id="content-form" class="content-form">
+						<label><span id="title-label">სათაური</span><input id="content-title" type="text" placeholder="მაგ. ალგებრის საფუძვლები" required></label>
+						<label><span id="type-label">ტიპი</span><select id="content-type" required><option value="video">📹 ვიდეო</option><option value="article">📝 სტატია</option><option value="podcast">🎙️ პოდკასტი</option></select></label>
+						<label><span id="subject-label">საგანი</span><select id="content-subject" required><option value="math">მათემატიკა</option><option value="history">ისტორია</option><option value="georgian">ქართული</option><option value="english">ინგლისური</option></select></label>
+						<label class="wide-field"><span id="description-label">აღწერა ან ბმული</span><input id="content-description" type="text" placeholder="მოკლე აღწერა ან სასარგებლო ბმული" required></label>
+						<button id="add-button" class="submit-button" type="submit"><span>+</span> დამატება</button>
+						<p id="content-sync-status" class="content-sync-status" role="status" aria-live="polite"></p>
+					</form>
+				</div>
+			</div>
+		</dialog>
+
+		<dialog id="article-dialog" class="article-dialog" aria-labelledby="article-dialog-title">
+			<div class="article-dialog-inner">
+				<header class="article-dialog-header">
+					<div>
+						<div id="article-dialog-meta" class="article-dialog-meta"></div>
+						<h2 id="article-dialog-title">სტატიის სათაური</h2>
+					</div>
+					<button id="article-close" class="dialog-close" type="button" aria-label="დახურვა">×</button>
+				</header>
+				<div id="article-dialog-content" class="article-dialog-content"></div>
+			</div>
+		</dialog>
+
+		<dialog id="quiz-dialog" class="article-dialog quiz-dialog" aria-labelledby="quiz-dialog-title">
+			<div class="article-dialog-inner">
+				<header class="article-dialog-header quiz-header">
+					<div>
+						<div id="quiz-dialog-meta" class="article-dialog-meta"></div>
+						<h2 id="quiz-dialog-title">საგამოცდო სავარჯიშო</h2>
+					</div>
+					<div class="quiz-timer" aria-live="polite"><span aria-hidden="true">⏱</span> <span id="quiz-timer">15:00</span></div>
+					<button id="quiz-close" class="dialog-close" type="button" aria-label="დახურვა">×</button>
+				</header>
+				<form id="quiz-form" class="quiz-form">
+					<div id="quiz-questions"></div>
+					<p id="quiz-status" class="quiz-status" role="status" hidden></p>
+					<button id="quiz-submit" class="quiz-submit" type="submit">პასუხების შემოწმება</button>
+				</form>
+			</div>
+		</dialog>
+
+		<section class="library-section" aria-labelledby="library-heading">
+			<div class="library-heading"><div><span class="section-kicker">YOUR LIBRARY</span><h2 id="library-heading">გაიღრმავე შენი ცოდნა</h2></div><p id="content-count" aria-live="polite">6 რესურსი</p></div>
+			<div class="toolbar" id="content-toolbar">
+				<div class="filter-groups">
+					<div class="filters" role="group" id="type-filter-group" aria-label="რესურსების ტიპის ფილტრი">
+						<button class="filter-button active" type="button" data-type-filter="all">ყველა</button>
+						<button class="filter-button" type="button" data-type-filter="video">📹 ვიდეოები</button>
+						<button class="filter-button" type="button" data-type-filter="article">📝 სტატიები</button>
+						<button class="filter-button" type="button" data-type-filter="podcast">🎙️ პოდკასტები</button>
+					</div>
+					<div class="filters subject-filters" role="group" id="subject-filter-group" aria-label="საგნის ფილტრი">
+						<button class="filter-button active" type="button" data-subject-filter="all">ყველა</button>
+						<button class="filter-button" type="button" data-subject-filter="math">მათემატიკა</button>
+						<button class="filter-button" type="button" data-subject-filter="history">ისტორია</button>
+						<button class="filter-button" type="button" data-subject-filter="georgian">ქართული</button>
+						<button class="filter-button" type="button" data-subject-filter="english">ინგლისური</button>
+					</div>
+				</div>
+			</div>
+			<div id="content-grid" class="content-grid" aria-live="polite"></div>
+		</section>
+	</main>
+
+	<script src="supabase-config.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
