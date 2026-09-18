@@ -542,3 +542,46 @@ applyTranslations();
 renderCards();
 loadResources();
 startResourceRefresh();
+
+
+// Admin Panel Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const adminBtns = document.querySelectorAll('button');
+  const adminPanel = document.getElementById('admin-panel');
+  const closeAdminBtn = document.getElementById('close-admin');
+  const addArticleForm = document.getElementById('add-article-form');
+
+  adminBtns.forEach(btn => {
+    if (btn.textContent.includes('Admin')) {
+      btn.addEventListener('click', () => adminPanel?.classList.remove('hidden'));
+    }
+  });
+
+  closeAdminBtn?.addEventListener('click', () => adminPanel?.classList.add('hidden'));
+
+  addArticleForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('article-title').value;
+    const subject = document.getElementById('article-subject').value;
+    const language = document.getElementById('article-language').value;
+    const content = document.getElementById('article-content').value;
+
+    if (typeof supabase === 'undefined') {
+      alert('Supabase client is not initialized!');
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('articles')
+      .insert([{ title, subject, language, content }]);
+
+    if (error) {
+      alert('შეცდომა: ' + error.message);
+    } else {
+      alert('სტატია წარმატებით დაემატა!');
+      addArticleForm.reset();
+      adminPanel.classList.add('hidden');
+      location.reload();
+    }
+  });
+});
