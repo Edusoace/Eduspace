@@ -112,34 +112,7 @@
 	<script src="supabase-config.js"></script>
 	<script src="script.js"></script>
 
-<div id="admin-panel" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
-  <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl w-full max-w-lg shadow-2xl relative text-white">
-    <button id="close-admin" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-white font-bold text-xl">✕</button>
-    <h2 class="text-xl font-bold mb-4 text-blue-400">ახალი სტატიის დამატება</h2>
-    <form id="add-article-form" class="space-y-4">
-      <div>
-        <label class="block text-sm mb-1 text-slate-300">სათაური</label>
-        <input type="text" id="article-title" required class="w-full p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500">
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm mb-1 text-slate-300">საგანი</label>
-          <select id="article-subject" class="w-full p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white">
-            <option value="მათემატიკა">მათემატიკა</option>
-            <option value="ისტორია">ისტორია</option>
-            <option value="ქართული">ქართული</option>
-            <option value="ინგლისური">ინგლისური</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm mb-1 text-slate-300">ენა</label>
-          <select id="article-language" class="w-full p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white">
-            <option value="ka">ქართული (KA)</option>
-            <option value="en">English (EN)</option>
-            <option value="tr">Türkçe (TR)</option>
-          </select>
-        </div>
-      </div>
+
       <div>
         <label class="block text-sm mb-1 text-slate-300">შინაარსი (Content)</label>
         <textarea id="article-content" rows="4" required class="w-full p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"></textarea>
